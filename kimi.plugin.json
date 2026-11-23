@@ -1,8 +1,14 @@
 {
   "name": "zlib",
   "version": "0.1.0",
-  "description": "Search, download, and manage ebooks with zlib",
-  "LongDescription": "A Kimi Code plugin for searching and downloading Z-Library ebooks, browsing saved books and recommendations, checking download history and account quota, editing local ebook metadata, importing books to WeRead, and sending files to Kindle. GitHub: https://github.com/jerryemc/zlib-kimi",
+  "description": "Search, download, and manage Z-Library ebooks with the zlib CLI",
+  "interface": {
+    "displayName": "Z-Library Ebook Tools",
+    "shortDescription": "Search, download, organize, and deliver ebooks with the zlib CLI",
+    "longDescription": "Search and download Z-Library ebooks, browse saved books and recommendations, inspect download history and account quota, look up and edit local ebook metadata, import books to WeRead, and send files to Kindle through SMTP. Requires the zlib CLI. GitHub: https://github.com/jerryemc/zlib-kimi",
+    "developerName": "jerryemc",
+    "websiteURL": "https://github.com/jerryemc/zlib-kimi"
+  },
   "skills": "./skills/",
   "mcpServers": {
     "zlib": {
