@@ -1,0 +1,55 @@
+name: Sync upstream agent skills
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 16 * * 0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-upstream-agent-skills
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out plugin
+        uses: actions/checkout@v4
+
+      - name: Check out upstream agent bundle
+        uses: actions/checkout@v4
+        with:
+          repository: heartleo/zlib
+          path: upstream
+          sparse-checkout: |
+            /plugins/zlib/skills/
+            /LICENSE
+          sparse-checkout-cone-mode: false
+
+      - name: Sync agent files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d upstream/plugins/zlib/skills
+          test -f upstream/LICENSE
+          rm -rf skills
+          mkdir -p skills
+          cp -R upstream/plugins/zlib/skills/. skills/
+          cp upstream/LICENSE LICENSE
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- skills LICENSE
+          if git diff --cached --quiet -- skills LICENSE; then
+            echo "No upstream changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: sync agent skills from upstream"
+          git push
