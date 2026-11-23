@@ -2,6 +2,7 @@
   "name": "zlib",
   "version": "0.1.0",
   "description": "Search, download, and manage ebooks with zlib",
+  "LongDescription": "A Kimi Code plugin for searching and downloading Z-Library ebooks, browsing saved books and recommendations, checking download history and account quota, editing local ebook metadata, importing books to WeRead, and sending files to Kindle. GitHub: https://github.com/jerryemc/zlib-kimi",
   "skills": "./skills/",
   "mcpServers": {
     "zlib": {
