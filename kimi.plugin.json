@@ -1,0 +1,12 @@
+{
+  "name": "zlib",
+  "version": "0.1.0",
+  "description": "Search, download, and manage ebooks with zlib",
+  "skills": "./skills/",
+  "mcpServers": {
+    "zlib": {
+      "command": "zlib",
+      "args": ["mcp"]
+    }
+  }
+}
