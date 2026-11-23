@@ -34,7 +34,14 @@ jobs:
         run: |
           set -euo pipefail
           test -d upstream/plugins/zlib/skills
+          test ! -L upstream/plugins/zlib/skills
           test -f upstream/LICENSE
+          test ! -L upstream/LICENSE
+          for name in zlib metadata kindle; do
+            skill="upstream/plugins/zlib/skills/$name/SKILL.md"
+            test -f "$skill"
+            test ! -L "$skill"
+          done
           rm -rf skills
           mkdir -p skills
           cp -R upstream/plugins/zlib/skills/. skills/
